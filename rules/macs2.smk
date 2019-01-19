@@ -1,6 +1,6 @@
 ALL.extend([expand('{directory}{sample}{extension}',
                   directory = PEAKS_DIR,
-                  sample = COLLECTED_BEDS,
+                  sample = PE_BED_NAMES,
                   extension = '_peaks.broadPeak'),])
                     
 rule macs2:

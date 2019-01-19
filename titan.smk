@@ -75,9 +75,11 @@ READS = config['read_info']['paired_ext']
 ALL = []
 COLLECTED_BEDS = []
 
+#collect pe-bed files as input to macs2
 if os.path.exists(MD_DIR + 'Collect_beds.done'):
     bed_list=pd.read_csv(MD_DIR + 'Collect_beds.done', delimiter=',')
     COLLECTED_BEDS.extend(bed_list)
+    PE_BED_NAMES = [os.path.basename(x) for x in COLLECTED_BEDS]
 
 
 #load rules
@@ -94,10 +96,9 @@ include: 'rules/mark_duplicates.smk'
 include: 'rules/filter_bam.smk'
 include: 'rules/sam_to_bed.smk'
 include: 'rules/collect_beds.smk'
-# include: 'rules/macs2.smk'
+include: 'rules/macs2.smk'
 # include: 'rules/multiqc.smk'
 
-print(COLLECTED_BEDS)
 #rule all
 rule all:
     input:
