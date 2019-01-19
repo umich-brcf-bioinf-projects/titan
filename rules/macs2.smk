@@ -6,7 +6,7 @@ ALL.extend([expand('{directory}{sample}{extension}',
 rule macs2:
     input:
         list = MD_DIR + 'Collect_beds.done',
-        beds = MD_DIR + '{sample}.filtered.bed',
+        beds = MD_DIR + '{sample}',
     output:
         bam = PEAKS_DIR + '{sample}_peaks.broadPeak',
     params:
@@ -29,9 +29,5 @@ rule macs2:
         --outdir {output} \
         -n {params.sample} \
         -g {params.genome_size} \
-        --{params.shape} \
-        {input.beds} \
-        > {output.bam}
-        rm -rf {params.tmp}
-        samtools index -@ {threads} -b {output.bam}
+        --{params.shape}
         """
