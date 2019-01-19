@@ -25,11 +25,12 @@ rule macs2:
         macs2 \
         callpeak \
         -t {input.beds} \
+        -f {params.format} \
         --outdir {output} \
         -n {params.sample} \
         -g {params.genome_size} \
         --{params.shape} \
-        {input.bed} \
+        {input.beds} \
         > {output.bam}
         rm -rf {params.tmp}
         samtools index -@ {threads} -b {output.bam}
