@@ -79,7 +79,7 @@ COLLECTED_BEDS = []
 if os.path.exists(MD_DIR + 'Collect_beds.done'):
     bed_list=pd.read_csv(MD_DIR + 'Collect_beds.done', delimiter=',')
     COLLECTED_BEDS.extend(bed_list)
-    PE_BED_NAMES = [os.path.basename(x) for x in COLLECTED_BEDS]
+    PE_BED_NAMES = [os.path.basename(x).split('.filtered')[0] for x in COLLECTED_BEDS]
 
 
 #load rules

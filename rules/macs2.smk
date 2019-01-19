@@ -6,14 +6,15 @@ ALL.extend([expand('{directory}{sample}{extension}',
 rule macs2:
     input:
         list = MD_DIR + 'Collect_beds.done',
-        beds = MD_DIR + '{sample}',
+        beds = MD_DIR + '{sample}.filtered.bed',
     output:
         bam = PEAKS_DIR + '{sample}_peaks.broadPeak',
     params:
         format = config['macs2']['format'],
         genome_size = config['macs2']['genome_size'],
         sample = '{sample}',
-        shape = config['macs2']['shape']
+        shape = config['macs2']['shape'],
+        outdir = PEAKS_DIR
     log:
         
     conda:
@@ -26,7 +27,7 @@ rule macs2:
         callpeak \
         -t {input.beds} \
         -f {params.format} \
-        --outdir {output} \
+        --outdir {params.outdir} \
         -n {params.sample} \
         -g {params.genome_size} \
         --{params.shape}
