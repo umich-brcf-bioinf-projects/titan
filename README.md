@@ -3,22 +3,29 @@ ATAC-seq analysis pipeline (in progress)
 
 # Overview
 
-The **titan** pipeline accepts fastq files, and emits peak files.  
+The **titan** pipeline accepts fastq files, various QC files (reads and ATAC), called peaks, and nucleosome positioning and occupancy files.  
 
-The pipeline is based on two existing piplines (https://github.com/harvardinformatics/ATAC-seq#peak) and (https://github.com/ParkerLab/ATACseq-Snakemake), taking steps from each at various steps.
+The pipeline is based on three existing piplines (https://github.com/harvardinformatics/ATAC-seq#peak), (https://github.com/ParkerLab/ATACseq-Snakemake), and (https://github.com/crazyhottommy/pyflow-ATACseq) taking steps or inspiration from each at various steps.
 
 **titan** performs the following steps:
 
 _Steps_
- - Read quality asessment (FastQC, FastQScreen)
- - Read trimming (NGmerge)
- - Read alignment (BWA mem)
- - Alignment file sorting and indexing (samtools sort and index)
- - Marking duplicate reads (Picard MarkDuplicates)
- - Filter low quality mapped reads and multi-mapped reads (samtools view)
- - Convert sam (paired-end reads) to bed, calculate fragment  size (SAMtoBED2.py)
- - Call peaks (MACS2)
- - Peak viewing/QC (ataqv)
+ - Read quality asessment (`FastQC`, `FastQScreen`)
+ - Read trimming (`NGmerge`)
+ - Read alignment (`BWA mem`)
+ - Alignment file sorting and indexing (`samtools sort` and `index`)
+ - Marking duplicate reads (`Picard MarkDuplicates`)
+ - Filter reads (`samtools view`)
+ - `-f 3` - keep only properly paired, properly mapped
+ - `-F 4` - exclude non-mapping reads
+ - `-F 8` - exclude read where mate was non-mapping
+ - `-F 256` - exclude multi-mapping reads
+ - `-F 1024` - exclude PCR or optical duplicates
+ - `-F 2048` - exclude reads aligning to different regions
+ - Convert sam (paired-end reads) to bed, calculate fragment  size (`SAMtoBED2.py`)
+ - Call peaks (`MACS2`)
+ - Nucleosome positioning and occupancy calling (`NucleoATAC`)
+ - Peak viewing/QC (`ataqv`, `phantompeakqualtools`)
 
 **titan** is implemented in Snakemake and makes use of several bioinformatic tools. Two main files (`titan.smk` and `config.yaml`) and a host of supporting files/directories (`rules/`, `snakemake_env.yml`) are necessary. See below.
 
