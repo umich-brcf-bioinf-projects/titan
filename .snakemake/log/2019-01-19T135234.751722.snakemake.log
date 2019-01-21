@@ -1,4 +1,0 @@
-Building DAG of jobs...
-Conda environment rules/envs/samtools_env.yml will be created.
-WorkflowError:
-Conda env file does not exist: /ccmb/BioinfCore/ActiveProjects/cjsifuen/titan/titan/rules/envs/macs2_env.yml
