@@ -53,6 +53,7 @@ TRIM_DIR = ANALYSIS_DIR + 'fastq_trimmed/'
 ALN_DIR = ANALYSIS_DIR + 'aligned/'
 MD_DIR = ANALYSIS_DIR + 'mark_duplicates/'
 PEAKS_DIR = ANALYSIS_DIR + 'peaks/'
+ATAQV_DIR = ANALYSIS_DIR + 'ataqv/'
 LOG_DIR = ANALYSIS_DIR + 'logs/'
 BENCH_DIR = ANALYSIS_DIR + 'benchmark/'
 
@@ -97,6 +98,7 @@ include: 'rules/filter_bam.smk'
 include: 'rules/sam_to_bed.smk'
 include: 'rules/collect_beds.smk'
 include: 'rules/macs2.smk'
+include: 'rules/ataqv.smk'
 # include: 'rules/multiqc.smk'
 
 #rule all

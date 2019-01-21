@@ -27,7 +27,11 @@ _Steps_
  - Nucleosome positioning and occupancy calling (`NucleoATAC`)
  - Peak viewing/QC (`ataqv`, `phantompeakqualtools`)
 
-**titan** is implemented in Snakemake and makes use of several bioinformatic tools. Two main files (`titan.smk` and `config.yaml`) and a host of supporting files/directories (`rules/`, `snakemake_env.yml`) are necessary. See below.
+**titan** is implemented in Snakemake and makes use of several bioinformatic tools. Two main files (`titan.smk` and `config.yaml`) and a host of supporting files/directories (`rules/`, `snakemake_env.yml`) are necessary. See below. 
+
+Additionally, `ataqv` must be installed. In this pipline, it has been installed in a conda env called `ataqv_env`, though it is not available via conda. Perhaps a step will be included later on to allow one to `source activate env`, where the `env` variable is the name of a particular environment, but for the moment, it is hard-coded as `ataqv_env`. Thus, an env must be created with that name, containing `ataqv`.
+
+1. Clone the repo.
 
 ```
 git clone https://github.com/umich-brcf-bioinf-projects/titan.git
@@ -40,51 +44,7 @@ After cding into `titan/`, you will see:
  - the main snakemake environment from which to execute the pipeline, `snakemake_env`
  - the `rules/` directory, which houses the rules and accompanying environments to be created during the run, in `rules/envs/`. 
  
- The directory structure is shown below:
- ```
-$ tree
-.
-├── README.md
-├── config.yaml
-├── rules
-│   ├── bwa_align.smk
-│   ├── bwa_index.smk
-│   ├── collect_beds.smk
-│   ├── envs
-│   │   ├── bbmap_env.yml
-│   │   ├── bwa_env.yml
-│   │   ├── fastqc_env.yml
-│   │   ├── fastqscreen_env.yml
-│   │   ├── multiqc_env.yml
-│   │   ├── ngmerge_env.yml
-│   │   ├── picard_env.yml
-│   │   ├── samtools_env.yml
-│   │   └── star_env.yml
-│   ├── fastq_screen_biotype.smk
-│   ├── fastq_screen_multi.smk
-│   ├── fastqc.smk
-│   ├── filter_bam.smk
-│   ├── get_fastq.smk
-│   ├── get_refs.smk
-│   ├── macs2.smk
-│   ├── mark_duplicates.smk
-│   ├── merge_counts.smk
-│   ├── multiqc.smk
-│   ├── populate_collected_beds.smk
-│   ├── sam_to_bed.smk
-│   ├── sort_index_bam.smk
-│   └── trim.smk
-├── scripts
-│   ├── SAMtoBED.py
-│   ├── SAMtoBED2.py
-│   └── removeChrom.py
-├── snakemake_env.yml
-└── titan.smk
-
-3 directories, 33 files
-```
-
-2. Create the `snakemake_env` to run **microraptor**. This will create a `conda` environment (named `snakemake_env`) that contains Snakemake, the correct version of Python, and several other dependencies necessary for running the pipeline.
+2. Create the `snakemake_env` to run **titan**. This will create a `conda` environment (named `snakemake_env`) that contains Snakemake, the correct version of Python, and several other dependencies necessary for running the pipeline.
 ```
 conda env create --name snakemake_env --file snakemake_env.yml
 ```
