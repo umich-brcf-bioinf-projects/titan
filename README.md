@@ -34,9 +34,6 @@ Additionally, `ataqv` must be installed. In this pipline, it has been installed 
 1. Create `ataqv_env` and activate it.
 ```
 conda create -n ataqv_env -y
-```
-
-```
 conda activate ataqv_env
 ```
 
