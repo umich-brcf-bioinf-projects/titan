@@ -31,7 +31,32 @@ _Steps_
 
 Additionally, `ataqv` must be installed. In this pipline, it has been installed in a conda env called `ataqv_env`, though it is not available via conda. Perhaps a step will be included later on to allow one to `source activate env`, where the `env` variable is the name of a particular environment, but for the moment, it is hard-coded as `ataqv_env`. Thus, an env must be created with that name, containing `ataqv`.
 
-1. Clone the repo.
+1. Create `ataqv_env` and activate it.
+```
+conda create -n ataqv_env -y
+```
+
+```
+conda activate ataqv_env
+```
+
+2. Download `ataqv`, untar and copy the `bin/` and `share/` sub-directories into the `ataqv_env` bin/ and share/ subdirectories. _Note: The bin and share directories should not yet be present if this is a fresh ataqv_env._
+
+A simple example:
+```
+wget https://github.com/ParkerLab/ataqv/releases/download/1.0.0/ataqv-1.0.0.x86_64.Linux.tar.gz
+tar xzf ataqv-1.0.0.x86_64.Linux.tar.gz
+cd ataqv-1.0.0/
+cp -r bin/ /home/cjsifuen/miniconda3/envs/ataqv_env/
+cp -r share/ /home/cjsifuen/miniconda3/envs/ataqv_env/
+```
+
+3. Exit the `ataqv_env` and proceed with installing the pipeline.
+```
+conda deactivate
+```
+
+4. Clone the repo.
 
 ```
 git clone https://github.com/umich-brcf-bioinf-projects/titan.git
@@ -44,9 +69,9 @@ After cding into `titan/`, you will see:
  - the main snakemake environment from which to execute the pipeline, `snakemake_env`
  - the `rules/` directory, which houses the rules and accompanying environments to be created during the run, in `rules/envs/`. 
  
-2. Create the `snakemake_env` to run **titan**. This will create a `conda` environment (named `snakemake_env`) that contains Snakemake, the correct version of Python, and several other dependencies necessary for running the pipeline.
+5. Create the `snakemake_env` to run **titan**. This will create a `conda` environment (named `snakemake_env`) that contains Snakemake, the correct version of Python, and several other dependencies necessary for running the pipeline.
 ```
-conda env create --name snakemake_env --file snakemake_env.yml
+conda create -n snakemake_env --file snakemake_env.yml
 ```
 
 Check environment installation via:
@@ -55,6 +80,7 @@ conda info --envs
 ```
 
 You should see a `snakemake_env` in the list of `conda` environments.
+
 
 
 # Usage
