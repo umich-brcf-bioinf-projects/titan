@@ -23,7 +23,6 @@ import datetime
 import time
 import snakemake
 import pandas as pd
-#from persistentlist import PersistentList
 
 
 #email
@@ -110,9 +109,9 @@ rule all:
 
 #email success
 onsuccess:
-    syscmd2 = "echo -e 'Denver ATAC: workflow complete.' | mutt -s 'Workflow finished, no error' " + EMAIL
+    syscmd2 = "echo -e 'ATAC(on)TITAN: workflow complete.' | mutt -s 'Workflow finished, no error' " + EMAIL
     os.system(syscmd2)
 
 onerror:
-    syscmd2 = "echo -e 'Denver ATAC: workflow error.' | mutt -s 'Workflow failed with error' " + EMAIL
+    syscmd2 = "echo -e 'ATAC(on)TITAN: workflow error.' | mutt -s 'Workflow failed with error' " + EMAIL
     os.system(syscmd2)
