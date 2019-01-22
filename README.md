@@ -37,7 +37,7 @@ conda create -n ataqv_env -y
 conda activate ataqv_env
 ```
 
-2. Download `ataqv`, untar and copy the `bin/` and `share/` sub-directories into the `ataqv_env` bin/ and share/ subdirectories. _Note: The bin and share directories should not yet be present if this is a fresh ataqv_env._
+2. Download `ataqv`, untar and copy the `bin/` and `share/` sub-directories into the `ataqv_env` `bin/` and `share/` subdirectories. _Note: The bin and share directories should not yet be present if this is a fresh ataqv_env._
 
 A simple example:
 ```
@@ -101,7 +101,7 @@ source activate snakemake_env
 
 3. Once loaded, edit the `config.yaml` file and run the pipeline via:
 ```
-snakemake --configfile config.yaml --snakefile microraptor.smk -p --use-conda --cores 40
+snakemake --configfile config.yaml --snakefile titan.smk -p --use-conda --cores 40
 ```
 
 The `-p` flag is optional. The `-n` flag can be used to perform a `dry-run`, checking to see which rules should be run and how many times. The `--cores` flag can be set as you prefer. 
