@@ -20,6 +20,7 @@ thread_info:
     index: 20
     trim: 5
     ataqv: 16
+    phantompeakqual: 8
 fastq_screen:
     aligner: 'bowtie2'
     subset: 10000
@@ -48,4 +49,5 @@ ataqv:
     organism: 'xenopus'
     extension: '1000'
     mitochondrial: 'chrM'
+
     
