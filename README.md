@@ -108,4 +108,8 @@ The `-p` flag is optional. The `-n` flag can be used to perform a `dry-run`, che
 
 # Notes
 
-At the moment, the pipeline supports  input of fastq files in the format output by the UM DNA-sequencing Core (Run_####/piname/Sample_119226/119226_TAAGGCGA-ATAGAGAG_S1_L007_R1_001.fastq.gz).  This can be changed in a later version of the pipeline.  
+ - At the moment, the pipeline supports  input of fastq files in the format output by the UM DNA-sequencing Core (`Run_####/piname/Sample_119226/119226_TAAGGCGA-ATAGAGAG_S1_L007_R1_001.fastq.gz`).  This can be changed in a later version of the pipeline.  
+
+ - Running `phantompeakqualtools` using an organism with a large number of scaffolds/chromosomes (1000s?) causes a stack memory issue in R. Initial attempts to fix this using `options(expressions=500000)` have failed. Thus, set whether you would like to run `phantompeakqualtools`, set the `run:` option in `config.yaml` to `Y` or `y`. By default, `phantompeakqualtools` will not run.
+ 
+ 

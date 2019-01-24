@@ -83,6 +83,8 @@ if os.path.exists(MD_DIR + 'Collect_beds.done'):
     COLLECTED_BEDS.extend(bed_list)
     PE_BED_NAMES = [os.path.basename(x).split('.filtered')[0] for x in COLLECTED_BEDS]
 
+#run phantompeakqual?
+RUN_PHANTOM = config['phantompeakqual']['run']
 
 #load rules
 include: 'rules/get_fastq.smk'
@@ -96,7 +98,8 @@ include: 'rules/bwa_align.smk'
 include: 'rules/sort_index_bam.smk'
 include: 'rules/mark_duplicates.smk'
 include: 'rules/filter_bam.smk'
-# include: 'rules/phantompeak_qual.smk'
+if RUN_PHANTOM.upper() == 'Y':
+    include: 'rules/phantompeak_qual.smk'
 include: 'rules/sam_to_bed.smk'
 include: 'rules/collect_beds.smk'
 include: 'rules/macs2.smk'

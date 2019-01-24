@@ -49,5 +49,6 @@ ataqv:
     organism: 'xenopus'
     extension: '1000'
     mitochondrial: 'chrM'
-
+phantompeakqual:
+    run: '' #add Y to run
     
