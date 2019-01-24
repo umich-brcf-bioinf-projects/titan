@@ -23,6 +23,5 @@ rule phantompeak_qual:
         -rf \
         -p={threads} \
         -odir={params.outdir} \
-        -out={output} \
-        -tmpdir={params.tmp}
+        -out={output}
         """
