@@ -101,6 +101,9 @@ include: 'rules/mark_duplicates.smk'
 include: 'rules/filter_bam.smk'
 if RUN_PHANTOM.upper() == 'Y':
     include: 'rules/phantompeak_qual.smk'
+    include: 'rules/multiqc_phantom.smk'
+else:
+    include: 'rules/multiqc.smk'
 include: 'rules/sam_to_bed.smk'
 include: 'rules/collect_beds.smk'
 include: 'rules/macs2.smk'
@@ -108,7 +111,6 @@ include: 'rules/ataqv.smk'
 include: 'rules/ataqv_html.smk'
 include: 'rules/peaks2bed.smk'
 include: 'rules/nucleoatac.smk'
-# include: 'rules/multiqc.smk'
 
 #rule all
 rule all:

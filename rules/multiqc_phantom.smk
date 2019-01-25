@@ -1,6 +1,6 @@
 ALL.extend([QC_DIR + 'multiqc_report.html',])
 
-rule multiqc:
+rule multiqc_phantom:
     input:
         expand('{directory}{sample}{extension}', #log
               directory = ALN_DIR,
@@ -32,7 +32,11 @@ rule multiqc:
         expand('{directory}{sample}{extension}', #bam 
               directory = MD_DIR,
               sample = SAMPLE_NAMES,
-              extension = '.filtered.bam')
+              extension = '.filtered.bam'),
+        expand('{directory}{sample}{extension}', #phantompeakqual
+              directory = PHANTOM_DIR,
+              sample = SAMPLE_NAMES,
+              extension = '.filtered.phantom.txt')
     output:
         QC_DIR + 'multiqc_report.html',
     params:
@@ -42,7 +46,8 @@ rule multiqc:
         BIOTYPE_DIR,
         MULTI_DIR,
         PEAKS_DIR,
-        MD_DIR
+        MD_DIR,
+        PHANTOM_DIR
     conda:
         'envs/multiqc_env.yml'
     shell:
