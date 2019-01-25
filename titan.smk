@@ -107,6 +107,7 @@ include: 'rules/macs2.smk'
 include: 'rules/ataqv.smk'
 include: 'rules/ataqv_html.smk'
 include: 'rules/peaks2bed.smk'
+include: 'rules/nucleoatac.smk'
 # include: 'rules/multiqc.smk'
 
 #rule all
