@@ -55,6 +55,7 @@ PEAKS_DIR = ANALYSIS_DIR + 'peaks/'
 ATAQV_DIR = ANALYSIS_DIR + 'ataqv/'
 HTML_DIR = ANALYSIS_DIR + 'ataqv_html/'
 PHANTOM_DIR = ANALYSIS_DIR + 'phantompeak/'
+NUC_DIR = ANALYSIS_DIR + 'nucleoatac/'
 LOG_DIR = ANALYSIS_DIR + 'logs/'
 BENCH_DIR = ANALYSIS_DIR + 'benchmark/'
 
@@ -105,6 +106,7 @@ include: 'rules/collect_beds.smk'
 include: 'rules/macs2.smk'
 include: 'rules/ataqv.smk'
 include: 'rules/ataqv_html.smk'
+include: 'rules/peaks2bed.smk'
 # include: 'rules/multiqc.smk'
 
 #rule all

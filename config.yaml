@@ -51,4 +51,6 @@ ataqv:
     mitochondrial: 'chrM'
 phantompeakqual:
     run: '' #add Y to run
+peaks2bed:
+    sizes: '/ccmb/BioinfCore/ActiveProjects/LSA_Denver_rdenver_CU5_cjsifuen_HI-2462/analysis_12_06/references/all.chrom.sizes'
     
