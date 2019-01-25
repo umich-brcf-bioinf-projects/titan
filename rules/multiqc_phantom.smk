@@ -2,14 +2,6 @@ ALL.extend([QC_DIR + 'multiqc_report.html',])
 
 rule multiqc_phantom:
     input:
-        expand('{directory}{sample}{extension}', #log
-              directory = ALN_DIR,
-              sample = SAMPLE_NAMES,
-              extension = '_starLog.final.out'), 
-        expand('{directory}{sample}{extension}', #counts
-              directory = COUNTS_DIR,
-              sample = SAMPLE_NAMES,
-              extension = '_starReadsPerGene.out.tab'), 
         expand('{directory}{sample}_{read}{extension}', #fastqc raw
               directory = QC_DIR,
               sample = SAMPLE_NAMES,
@@ -41,8 +33,6 @@ rule multiqc_phantom:
         QC_DIR + 'multiqc_report.html',
     params:
         QC_DIR,
-        ALN_DIR,
-        COUNTS_DIR,
         BIOTYPE_DIR,
         MULTI_DIR,
         PEAKS_DIR,
