@@ -21,7 +21,7 @@ thread_info:
     trim: 5
     ataqv: 16
     phantompeakqual: 20
-    nucleoatac: 2
+    nucleoatac: 1
 fastq_screen:
     aligner: 'bowtie2'
     subset: 10000
